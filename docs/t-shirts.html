@@ -271,8 +271,8 @@ body {
 		<!-- 카테고리 메뉴 영역 -->
 		<div class="category-section">
 			<nav class="category-menu">
-				<a href="#" class="category-item" data-page="main">MAIN</a>
-				<a href="#" class="category-item" data-page="tshirts">T-SHIRTS</a>
+				<a href="./index.html" class="category-item" data-page="main">MAIN</a>
+				<a href="#" class="category-item active" data-page="tshirts">T-SHIRTS</a>
 				<a href="#" class="category-item">JEWELRY</a>
 				<a href="#" class="category-item">BAGS</a>
 				<a href="#" class="category-item">GOODS</a>
@@ -284,7 +284,7 @@ body {
 		<div class="main-image-section" id="main-section">
 			<div class="main-products-grid">
 				<div class="main-product-item">
-					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_01.gif" alt="하니힐 티셔츠 1" class="main-product-image" onclick="goToTshirts()">
+					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_01.gif" alt="하니힐 티셔츠 1" class="main-product-image">
 					<div class="main-product-info">
 						<h3 class="main-product-name">화이트T-레드자수</h3>
 						<div class="main-product-price">30,000</div>
@@ -292,7 +292,7 @@ body {
 					</div>
 				</div>
 				<div class="main-product-item">
-					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_02.gif" alt="하니힐 티셔츠 2" class="main-product-image" onclick="goToTshirts()">
+					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_02.gif" alt="하니힐 티셔츠 2" class="main-product-image">
 					<div class="main-product-info">
 						<h3 class="main-product-name">블랙T-화이트자수</h3>
 						<div class="main-product-price">30,000</div>
@@ -300,7 +300,7 @@ body {
 					</div>
 				</div>
 				<div class="main-product-item">
-					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_03.gif" alt="하니힐 티셔츠 3" class="main-product-image" onclick="goToTshirts()">
+					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_03.gif" alt="하니힐 티셔츠 3" class="main-product-image">
 					<div class="main-product-info">
 						<h3 class="main-product-name">연블루T-화이트자수</h3>
 						<div class="main-product-price">30,000</div>
@@ -308,7 +308,7 @@ body {
 					</div>
 				</div>
 				<div class="main-product-item">
-					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_04.gif" alt="하니힐 티셔츠 4" class="main-product-image" onclick="goToTshirts()">
+					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_04.gif" alt="하니힐 티셔츠 4" class="main-product-image">
 					<div class="main-product-info">
 						<h3 class="main-product-name">연블루T-핑크자수&핑크넥</h3>
 						<div class="main-product-price">30,000</div>
@@ -316,7 +316,7 @@ body {
 					</div>
 				</div>
 				<div class="main-product-item">
-					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_05.gif" alt="하니힐 티셔츠 5" class="main-product-image" onclick="goToTshirts()">
+					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_05.gif" alt="하니힐 티셔츠 5" class="main-product-image">
 					<div class="main-product-info">
 						<h3 class="main-product-name">레몬옐로우T-화이트자수</h3>
 						<div class="main-product-price">30,000</div>
@@ -324,7 +324,7 @@ body {
 					</div>
 				</div>
 				<div class="main-product-item">
-					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_06.gif" alt="하니힐 티셔츠 6" class="main-product-image" onclick="goToTshirts()">
+					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_06.gif" alt="하니힐 티셔츠 6" class="main-product-image">
 					<div class="main-product-info">
 						<h3 class="main-product-name">화이트T-블루자수&블루넥</h3>
 						<div class="main-product-price">30,000</div>
@@ -332,7 +332,7 @@ body {
 					</div>
 				</div>
 				<div class="main-product-item">
-					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_07.gif" alt="하니힐 티셔츠 7" class="main-product-image" onclick="goToTshirts()">
+					<img src="https://hanihill.com/img/products/t-shirts/t-shirts_07.gif" alt="하니힐 티셔츠 7" class="main-product-image">
 					<div class="main-product-info">
 						<h3 class="main-product-name">블랙T-블루자수&블루넥</h3>
 						<div class="main-product-price">30,000</div>
@@ -343,77 +343,86 @@ body {
 		</div>
 
 <script>
+
+$(document).ready(function() {
 	// 페이지 초기화 시 MAIN을 활성화
 	document.addEventListener('DOMContentLoaded', function() {
 		document.querySelector('[data-page="main"]').classList.add('active');
 	});
+});
 
-	// 카테고리 메뉴 클릭 이벤트
-	document.querySelectorAll('.category-item').forEach(item => {
-		item.addEventListener('click', function(e) {
-			e.preventDefault();
-			
-			// 모든 메뉴에서 active 클래스 제거
-			document.querySelectorAll('.category-item').forEach(menu => {
-				menu.classList.remove('active');
-			});
-			// 클릭된 메뉴에 active 클래스 추가
-			this.classList.add('active');
-			
-			// 페이지 전환 처리
-			const page = this.getAttribute('data-page');
-			
-			if (page === 'main') {
-				document.getElementById('main-section').style.display = 'flex';
-				document.getElementById('tshirts-section').style.display = 'none';
-				document.body.style.backgroundColor = 'white';
-			} else if (page === 'tshirts') {
-				document.getElementById('main-section').style.display = 'none';
-				document.getElementById('tshirts-section').style.display = 'block';
-				document.body.style.backgroundColor = 'white';
-			}
-		});
-	});
 
-	// 쿠팡 페이지 열기 함수
-	function openCoupang() {
-		window.open('https://www.coupang.com/vp/products/8995923754?itemId=26356436072&vendorItemId=93377952070&q=%ED%95%98%EB%8B%88%ED%9E%90&searchId=1f5bd9707884390&sourceType=search&itemsCount=36&searchRank=15&rank=15', '_blank');
-	}
-
-	// T-SHIRTS 페이지로 이동하는 함수
-	function goToTshirts() {
-		// T-SHIRTS 메뉴를 활성화
+/*
+// 카테고리 메뉴 클릭 이벤트
+document.querySelectorAll('.category-item').forEach(item => {
+	item.addEventListener('click', function(e) {
+		e.preventDefault();
+		
+		// 모든 메뉴에서 active 클래스 제거
 		document.querySelectorAll('.category-item').forEach(menu => {
 			menu.classList.remove('active');
 		});
-		document.querySelector('[data-page="tshirts"]').classList.add('active');
+		// 클릭된 메뉴에 active 클래스 추가
+		this.classList.add('active');
 		
-		// T-SHIRTS 페이지로 전환
-		document.getElementById('main-section').style.display = 'none';
-		document.getElementById('tshirts-section').style.display = 'block';
-		document.body.style.backgroundColor = 'white';
-	}
-
-	// 이미지 로드 에러 처리
-	document.querySelectorAll('.product-image, .main-product-image').forEach((img, index) => {
-		img.addEventListener('error', function() {
-			console.log(`이미지 로드 실패: ${this.src}`);
-			// 대체 이미지로 변경 시도
-			if (this.src.includes('t-shirts_07.gif')) {
-				// 7번 이미지가 실패하면 1번 이미지로 대체
-				this.src = 'https://hanihill.com/img/products/t-shirts/t-shirts_01.gif';
-			} else {
-				// 다른 이미지들은 기본 placeholder로 대체
-				this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjVGNUY1Ii8+CjxwYXRoIGQ9Ik0xNTAgMTAwQzEyNy45MSAxMDAgMTEwIDExNy45MSAxMTAgMTQwQzExMCAxNjIuMDkgMTI3LjkxIDE4MCAxNTAgMTgwQzE3Mi4wOSAxODAgMTkwIDE2Mi4wOSAxOTAgMTQwQzE5MCAxMTcuOTEgMTcyLjA5IDEwMCAxNTAgMTAwWk0xNTAgMTYwQzEzOC45NSAxNjAgMTMwIDE1MS4wNSAxMzAgMTQwQzEzMCAxMjguOTUgMTM4Ljk1IDEyMCAxNTAgMTIwQzE2MS4wNSAxMjAgMTcwIDEyOC45NSAxNzAgMTQwQzE3MCAxNTEuMDUgMTYxLjA1IDE6MCAxNTAgMTYwWiIgZmlsbD0iI0NDQ0NDQyIvPgo8L3N2Zz4K';
-			}
-			this.alt = '이미지를 불러올 수 없습니다';
-		});
+		// 페이지 전환 처리
+		const page = this.getAttribute('data-page');
 		
-		// 이미지 로드 성공 시 로그
-		img.addEventListener('load', function() {
-			console.log(`이미지 로드 성공: ${this.src}`);
-		});
+		if (page === 'main') {
+			document.getElementById('main-section').style.display = 'flex';
+			document.getElementById('tshirts-section').style.display = 'none';
+			document.body.style.backgroundColor = 'white';
+		} else if (page === 'tshirts') {
+			document.getElementById('main-section').style.display = 'none';
+			document.getElementById('tshirts-section').style.display = 'block';
+			document.body.style.backgroundColor = 'white';
+		}
 	});
+});
+*/
+// 쿠팡 페이지 열기 함수
+function openCoupang() {
+	window.open('https://www.coupang.com/vp/products/8995923754?itemId=26356436072&vendorItemId=93377952070&q=%ED%95%98%EB%8B%88%ED%9E%90&searchId=1f5bd9707884390&sourceType=search&itemsCount=36&searchRank=15&rank=15', '_blank');
+}
+
+
+
+/*
+// T-SHIRTS 페이지로 이동하는 함수
+function goToTshirts() {
+	// T-SHIRTS 메뉴를 활성화
+	document.querySelectorAll('.category-item').forEach(menu => {
+		menu.classList.remove('active');
+	});
+	document.querySelector('[data-page="tshirts"]').classList.add('active');
+	
+	// T-SHIRTS 페이지로 전환
+	document.getElementById('main-section').style.display = 'none';
+	document.getElementById('tshirts-section').style.display = 'block';
+	document.body.style.backgroundColor = 'white';
+}
+*/
+
+// 이미지 로드 에러 처리
+document.querySelectorAll('.product-image, .main-product-image').forEach((img, index) => {
+	img.addEventListener('error', function() {
+		console.log(`이미지 로드 실패: ${this.src}`);
+		// 대체 이미지로 변경 시도
+		if (this.src.includes('t-shirts_07.gif')) {
+			// 7번 이미지가 실패하면 1번 이미지로 대체
+			this.src = 'https://hanihill.com/img/products/t-shirts/t-shirts_01.gif';
+		} else {
+			// 다른 이미지들은 기본 placeholder로 대체
+			this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjVGNUY1Ii8+CjxwYXRoIGQ9Ik0xNTAgMTAwQzEyNy45MSAxMDAgMTEwIDExNy45MSAxMTAgMTQwQzExMCAxNjIuMDkgMTI3LjkxIDE4MCAxNTAgMTgwQzE3Mi4wOSAxODAgMTkwIDE2Mi4wOSAxOTAgMTQwQzE5MCAxMTcuOTEgMTcyLjA5IDEwMCAxNTAgMTAwWk0xNTAgMTYwQzEzOC45NSAxNjAgMTMwIDE1MS4wNSAxMzAgMTQwQzEzMCAxMjguOTUgMTM4Ljk1IDEyMCAxNTAgMTIwQzE2MS4wNSAxMjAgMTcwIDEyOC45NSAxNzAgMTQwQzE3MCAxNTEuMDUgMTYxLjA1IDE6MCAxNTAgMTYwWiIgZmlsbD0iI0NDQ0NDQyIvPgo8L3N2Zz4K';
+		}
+		this.alt = '이미지를 불러올 수 없습니다';
+	});
+	
+	// 이미지 로드 성공 시 로그
+	img.addEventListener('load', function() {
+		console.log(`이미지 로드 성공: ${this.src}`);
+	});
+});
 </script>
 	</body>
 </html>
