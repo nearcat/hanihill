@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>HANIHILL'S - JEWELRY</title>
+		<script src="/js/jquery-3.7.1.min.js"></script>
+		<script src="/js/com/common.js"></script>
+<!--
+		<link rel="stylesheet" href="./css/prods/jewelry.css" />
+-->
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	background-color: white;
+	font-family: 'Arial', sans-serif;
+	min-width: 1024px;
+}
+/* 상단 로고 영역 */
+.logo-section {
+	height: 100px;
+	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+.logo {
+	font-size: 32px;
+	font-weight: bold;
+	color: #333;
+	letter-spacing: 2px;
+}
+/* 카테고리 메뉴 영역 */
+.category-section {
+	height: 50px;
+	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+.category-menu {
+	display: flex;
+	gap: 40px;
+	max-width: 1024px;
+	width: 100%;
+	justify-content: center;
+	padding: 0 20px;
+}
+.category-item {
+	font-size: 14px;
+	font-weight: 500;
+	color: #333;
+	text-decoration: none;
+	padding: 5px 10px;
+	transition: color 0.3s ease;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+.category-item:hover {
+	color: #666;
+}
+.category-item.active {
+	color: #000;
+	font-weight: 600;
+}
+/* 메인 이미지 영역 */
+.main-image-section {
+	width: 100%;
+	min-height: calc(100vh - 150px);
+	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px 10px;
+}
+.main-products-grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 20px;
+	max-width: 1200px;
+	width: 100%;
+}
+.main-product-item {
+	background: transparent;
+	transition: transform 0.3s ease;
+	display: flex;
+	flex-direction: column;
+}
+.main-product-item:hover {
+	transform: translateY(-5px);
+}
+.main-product-image {
+	width: 100%;
+	height: 350px;
+	object-fit: contain;
+	cursor: pointer;
+	background-color: transparent;
+}
+.main-product-info {
+	padding: 10px 0;
+	text-align: left;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+.main-product-name {
+	font-size: 14px;
+	font-weight: 600;
+	color: #333;
+	margin-bottom: 5px;
+	line-height: 1.3;
+}
+.main-product-price {
+	font-size: 16px;
+	font-weight: 700;
+	color: #2c5aa0;
+	margin-bottom: 5px;
+}
+.main-coupang-text {
+	font-size: 14px;
+	font-weight: 600;
+	color: #ff6b6b;
+	cursor: pointer;
+	text-decoration: underline;
+	transition: color 0.3s ease;
+}
+.main-coupang-text:hover {
+	color: #ee5a24;
+}
+/* 두 번째 줄 좌측 정렬을 위한 그리드 설정 */
+.main-product-item:nth-child(6) {
+	grid-column: 1 / 2;
+}
+.main-product-item:nth-child(7) {
+	grid-column: 2 / 3;
+}
+/* T-SHIRTS 상품 페이지 스타일 */
+.tshirts-section {
+	width: 100%;
+	background-color: white;
+	padding: 60px 20px;
+	display: none;
+}
+.products-container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.products-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 40px;
+	margin-top: 40px;
+}
+.product-card {
+	background: white;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	border: 1px solid #f0f0f0;
+}
+.product-card:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+.product-image {
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+	border-bottom: 1px solid #f0f0f0;
+}
+.product-info {
+	padding: 25px;
+}
+.product-name {
+	font-size: 18px;
+	font-weight: 600;
+	color: #333;
+	margin-bottom: 12px;
+	line-height: 1.4;
+}
+.product-price {
+	font-size: 20px;
+	font-weight: 700;
+	color: #2c5aa0;
+	margin-bottom: 20px;
+}
+.coupang-button {
+	background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+	color: white;
+	border: none;
+	padding: 12px 24px;
+	font-size: 14px;
+	font-weight: 600;
+	border-radius: 25px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.coupang-button:hover {
+	background: linear-gradient(135deg, #ee5a24, #d63031);
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(238, 90, 36, 0.4);
+}
+.coupang-button:active {
+	transform: translateY(0);
+}
+.section-title {
+	text-align: center;
+	font-size: 36px;
+	font-weight: 700;
+	color: #333;
+	margin-bottom: 20px;
+	letter-spacing: 2px;
+}
+.section-subtitle {
+	text-align: center;
+	font-size: 16px;
+	color: #666;
+	margin-bottom: 40px;
+	line-height: 1.6;
+}
+/* 반응형 처리 */
+@media screen and (max-width: 1200px) {
+	.products-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 30px;
+	}
+}
+@media screen and (max-width: 768px) {
+	.products-grid {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+	.section-title {
+		font-size: 28px;
+	}
+}
+@media screen and (min-width: 1024px) {
+	.main-image {
+		min-width: 100%;
+	}
+}
+@media screen and (max-width: 1024px) {
+	body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.logo-section,
+	.category-section {
+		width: 1024px;
+	}
+	.main-image-section {
+		width: 1024px;
+	}
+}
+</style>
+	</head>
+	<body>
+		<!-- 상단 로고 영역 -->
+		<div class="logo-section">
+			<div class="logo"><a href="./index.html"><img src="./img/logo/hani-logo-main.png" border="0"></a></div>
+		</div>
+
+		<!-- 카테고리 메뉴 영역 -->
+		<div class="category-section">
+			<nav class="category-menu">
+				<a href="./index.html" class="category-item" data-page="main">MAIN</a>
+				<a href="./t-shirts.html" class="category-item" data-page="tshirts">T-SHIRTS</a>
+				<a href="#" class="category-item active">JEWELRY</a>
+				<a href="#" class="category-item">BAGS</a>
+				<a href="#" class="category-item">GOODS</a>
+				<a href="#" class="category-item">HANIHILL'S</a>
+			</nav>
+		</div>
+
+		<!-- 메인 이미지 영역 -->
+		<div class="main-image-section" id="main-section">
+			<div class="main-products-grid">
+				<div class="main-product-item">
+					<img src="./img/products/jewelry/jewelry_01.png" alt="하니힐 티셔츠 1" class="main-product-image">
+					<div class="main-product-info">
+						<h3 class="main-product-name">화이트T-레드자수</h3>
+						<div class="main-product-price">30,000</div>
+						<div class="main-coupang-text" onclick="openCoupang('8995923754');">GO 쿠팡</div>
+					</div>
+				</div>
+				<div class="main-product-item">
+					<img src="./img/products/jewelry/jewelry_02.png" alt="하니힐 티셔츠 2" class="main-product-image">
+					<div class="main-product-info">
+						<h3 class="main-product-name">블랙T-화이트자수</h3>
+						<div class="main-product-price">30,000</div>
+						<div class="main-coupang-text" onclick="openCoupang('8995923754');">GO 쿠팡</div>
+					</div>
+				</div>
+				<div class="main-product-item">
+<!--
+					<img src="./img/products/t-shirts/t-shirts_03.gif" alt="하니힐 티셔츠 3" class="main-product-image">
+					<div class="main-product-info">
+						<h3 class="main-product-name">상품명</h3>
+						<div class="main-product-price">300,000</div>
+						<div class="main-coupang-text" onclick="openCoupang('8995923754');">GO 쿠팡</div>
+					</div>
+-->
+				</div>
+				<div class="main-product-item">
+<!--
+					<img src="./img/products/t-shirts/t-shirts_03.gif" alt="하니힐 티셔츠 3" class="main-product-image">
+					<div class="main-product-info">
+						<h3 class="main-product-name">상품명</h3>
+						<div class="main-product-price">300,000</div>
+						<div class="main-coupang-text" onclick="openCoupang('8995923754');">GO 쿠팡</div>
+					</div>
+-->
+				</div>
+				<div class="main-product-item">
+<!--
+					<img src="./img/products/t-shirts/t-shirts_03.gif" alt="하니힐 티셔츠 3" class="main-product-image">
+					<div class="main-product-info">
+						<h3 class="main-product-name">상품명</h3>
+						<div class="main-product-price">300,000</div>
+						<div class="main-coupang-text" onclick="openCoupang('8995923754');">GO 쿠팡</div>
+					</div>
+-->
+				</div>
+				<div class="main-product-item">
+<!--
+					<img src="./img/products/t-shirts/t-shirts_03.gif" alt="하니힐 티셔츠 3" class="main-product-image">
+					<div class="main-product-info">
+						<h3 class="main-product-name">상품명</h3>
+						<div class="main-product-price">300,000</div>
+						<div class="main-coupang-text" onclick="openCoupang('8995923754');">GO 쿠팡</div>
+					</div>
+-->
+				</div>
+				<div class="main-product-item">
+<!--
+					<img src="./img/products/t-shirts/t-shirts_03.gif" alt="하니힐 티셔츠 3" class="main-product-image">
+					<div class="main-product-info">
+						<h3 class="main-product-name">상품명</h3>
+						<div class="main-product-price">300,000</div>
+						<div class="main-coupang-text" onclick="openCoupang('8995923754');">GO 쿠팡</div>
+					</div>
+-->
+			</div>
+		</div>
+
+<script>
+
+$(document).ready(function() {
+
+});
+
+</script>
+	</body>
+</html>
